@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Your Post</title>
+    <link rel="shortcut icon" href="/images/picture.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-screen h-screen bg-zinc-900">
+        <a class="text-yellow-400 p-3 block text-end text-medium hover:underline" href="/profile">Go Back</a>
+        <h1 class="text-white text-3xl text-bold text-center pt-10">Edit your Post</h1>
+        <div class="mt-10 ">
+        <form class="flex flex-col justify-center items-center gap-7" action="/editedPost/<%= post._id %>" method="post">
+            <textarea name="editedContent" class="resize-none w-80 h-50 rounded bg-zinc-800 text-white p-2" required><%= post.content %> </textarea>
+            <input class="w-xs text-xl text-white font-medium p-2 bg-yellow-500 rounded hover:scale-[1.02] " type="submit" value="Save Changes">
+        </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="shortcut icon" href="/images/login.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-screen h-screen bg-zinc-900">
+        <a class="text-blue-600 p-3 block text-end text-medium hover:underline" href="/">Go to Home</a>
+        <h1 class="text-white text-3xl text-bold text-center pt-10">Login Yourself</h1>
+        <div class="mt-20 ">
+        <form class="flex flex-col justify-center items-center gap-7" action="/oldUser" method="post">
+            <input class="w-xs text-xl text-white p-2  bg-zinc-800 rounded placeholder:text-zinc-600"  type="email" placeholder="Enter your email..." name="email" required>
+            <input class="w-xs text-xl text-white p-2 bg-zinc-800 rounded placeholder:text-zinc-600" type="password" placeholder="Enter your password..." name="password" required>
+            <input class="w-xs text-xl text-white font-medium p-2 bg-yellow-500 rounded hover:scale-[1.02] " type="submit" value="Login">
+
+        </form>
+        </div>
+    </div>
+</body>
+</html>

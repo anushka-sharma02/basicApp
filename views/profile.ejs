@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile|<%= user.name %></title>
+    <link rel="shortcut icon" href="/images/profile.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-full h-screen bg-zinc-900">
+        <div class="flex flex-row justify-end items-center gap-10 p-7">
+            <a class="text-white font-medium p-2 bg-blue-500 rounded hover:scale-[1.02]" href="/uploadPic">Upload Profile pic</a>
+            <a class="text-white font-medium p-2 bg-red-500 rounded hover:scale-[1.02]" href="/logout">LogOut</a>
+        </div>
+        <div class="flex flex-row justify-left items-center gap-4 ml-10">
+            <div class="w-12 h-12 rounded overflow-hidden">
+                <img class="w-full h-full object-cover object-center" src="/images/uploads/<%= user.profilepic %>" alt="error loading!!!">
+            </div>
+            <h1 class="text-white text-2xl font-medium">Welcome <%=user.name %>, to your profile.</h1>
+        </div>
+        <div class="flex flex-row justify-left items-center gap-2 m-10">
+            <p class="text-m font-medium text-blue-200"> Want to create a new post?</p>
+            <a class="text-white font-medium text-center p-1 bg-blue-500 rounded hover:scale-[1.02]" href="/createPost">Create Post</a>
+        </div>
+        <div class="text-2xl text-blue-400 mx-10 my-7 font-medium ">Your Posts</div>
+        <% if ( user.posts.length>0){ %>
+             <div class="w- full h-fit-content flex flex-row justify-left items-center gap-4 mx-10 flex-wrap">
+             <%  user.posts.reverse().forEach((post)=>{%>
+                <div class="w-50 h-58 rounded bg-zinc-800 hover:scale-[1.01]">
+                     <p class="w-full h-44 bg-zinc-700 rounded text-white text-sm font-normal text-left p-3 overflow-hidden line-clamp-8"><%= post.content %></p>
+                    <p class="text-xs text-zinc-200 ml-3 mt-1"><%= new Date(post.date).toLocaleDateString() %>   <%= new Date(post.date).toLocaleTimeString() %></p>
+                    <div class="flex flex-row justify-between items-center mt-1 mx-3">
+                        <div class="flex flex-row justify-left items-center gap-3">
+                            <div>
+                        <span class="text-blue-200"><%= post.likes.length %></span>
+                        <a class="inline-block w-11 text-blue-400 hover:underline" href="/likesHandler/<%= post._id %>"><%= (post.likes.indexOf(user._id)===-1) ? "Like" : "Unlike" %></a>
+                        </div>
+                        <a class="text-white hover:underline" href="/editHandler/<%= post._id %>">Edit</a>
+                        </div>
+                        <a class="text-red-500 hover:underline" href="/deletePost/<%= post._id %>">Delete</a>
+                    </div>
+                </div>
+             <% }) %>
+             </div>
+        <% }else{ %>
+            <h5 class="text-white text-m font-normal m-10">No posts uploaded till now...</h5>
+            <% } %>
+    </div>
+</body>
+</html>
