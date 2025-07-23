@@ -1,1 +1,2 @@
 # basicApp
+In this project, I built a basic app using HTML ,tailwind CSS, Express.js, Node.js, mongoDB, multer, jsonwebtoken, bcrypt in which following functionalities are present: Creating a new Account, Login to an existing account, Logout of an existing account, Uploading profile picture to the existing account using multer, creating post in the account, liking and unliking the post, likeCount , editing the post and deleting the post.
